@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.br3c4dev.course.entities.Category;
 import com.br3c4dev.course.entities.Order;
 import com.br3c4dev.course.entities.OrderItem;
+import com.br3c4dev.course.entities.Payment;
 import com.br3c4dev.course.entities.Product;
 import com.br3c4dev.course.entities.User;
 import com.br3c4dev.course.entities.enums.OrderStatus;
@@ -73,7 +74,6 @@ public class TestConfig implements CommandLineRunner {
 		Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), OrderStatus.WAITING_PAYMENT, u1);
 		
 		
-		
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		orderRepository.saveAll(Arrays.asList(o1,o2,o3));
 		
@@ -83,6 +83,11 @@ public class TestConfig implements CommandLineRunner {
 		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
 		
 		orderItemRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
+		
+		Payment pay1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
+		o1.setPayment(pay1);
+		
+		orderRepository.save(o1);
 		
 	}
 
