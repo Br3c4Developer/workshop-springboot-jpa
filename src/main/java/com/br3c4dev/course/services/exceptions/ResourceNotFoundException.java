@@ -1,4 +1,4 @@
-package com.br3c4dev.course.services.ResourceNotFoundException;
+package com.br3c4dev.course.services.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException{
 
